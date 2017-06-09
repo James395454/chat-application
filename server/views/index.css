@@ -1,5 +1,10 @@
 form {
     border: 3px solid #f1f1f1;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+  margin: -150px 0 0 -300px;
+  position: absolute;
 }
 
 /* Full-width inputs */
@@ -27,6 +32,11 @@ button {
 }
 #signup {
   background-color:red;
+}
+#result {
+  font-weight:bold;
+  color:red;
+  top: 50%;
 }
 /* Add a hover effect for buttons */
 button:hover {

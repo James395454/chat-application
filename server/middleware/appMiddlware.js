@@ -5,6 +5,8 @@ var express = require('express');
 
 module.exports = function(app) {
   app.use(express.static('./server/views'));
+  app.use(express.static('./server/views/images'));
+  app.use(express.static('./server/public'));
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

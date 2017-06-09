@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chat Application</title>
+   <title>Chat Application</title>
+   <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <style >
+    body{
+     margin-top: 80px;
+     background-color: blue;
+    }
+   </style>
   </head>
-  <body>
-  <label><b>hi</b></label>
+  <body style="background:blue">
+    <label id="welcome"></label>
+    <div class = "container" >
+      <div class = "row" id = "messageArea" >
+       <div class = "col-md-4" style="width:50%;">
+        <div class = "well" style="margin: 20px;  background: purple;">
+         <h3 style="color:orange;"><center>Users</center></h3>
+         <ul class = "list-group" id = "users"> </ul>
+         </div>
+       </div>
+       <div class = "col-md-8" style="width:50%;">
+        <label id="chatter"></label>
+        <div class="chat" id = "chat" style="overflow:scroll; height:330px;  background:orange; margin: 10px;"> </div>
+        <form id = "messageForm">
+         <div class = "form-group">
+          <textarea class = "form-control" style="width:100%;" id = "message"></textarea>
+          <br/>
+          <input type="submit" class = "btn btn-primary" style="background-color: green;"value = "Send Message"/>
+         </div>
+        </form>
+       </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,9 +1,8 @@
 var router = require('express').Router();
-var userController = require('../controllers/authController');
+var messageController = require('../controllers/messageController');
 
-router.post('/signup', userController.create);
-
-router.post('/login', userController.get);
+router.post('/send', messageController.send);
+router.get('/:username/:communicator', messageController.get);
 
 router.use(function(err, req, res, next) {
   if (err) {

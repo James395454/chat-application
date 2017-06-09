@@ -69821,16 +69821,26 @@ WError.prototype.cause = function we_cause(c)
 };
 
 },{"assert":16,"extsprintf":237,"util":174}],347:[function(require,module,exports){
-// var jsdom = require('jsdom').jsdom;
-//  var document = jsdom('<html></html>', {});
-//  var window = document.defaultView;
-//  var $ = require('jquery')(window);
 var request = require('request');
-const baseURL = 'http://localhost:3000/auth/';
+const baseURL = "http://localhost:3000/auth/"
+
 $('#login-form').submit(function(ev) {
     ev.preventDefault();
-    console.log('clicked submit');
-    this.submit();
+    console.log('val ' + $(document.activeElement).attr('id'));
+    const requestURL = $(document.activeElement).attr('id') == 'login' ? baseURL + 'login': baseURL + 'signup';
+    //$('#login-form').attr('action', requestURL);
+    request.post(
+              requestURL,
+              { json:{username: $('#username').val(), password: $('#password').val() }},
+              (error, response, body) => {
+                if (!error && response.statusCode == 200) {
+                  console.log('Signup complete! Welcome ' + response.user);
+                } else {
+                  console.log('response error' + body.message);
+                }
+              }
+          );
+  //this.submit();
 });
 
 },{"request":293}]},{},[347]);

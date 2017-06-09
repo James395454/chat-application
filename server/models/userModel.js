@@ -13,4 +13,4 @@ const UserSchema = new mongoose.Schema({
   messages: []
 });
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('users', UserSchema);
