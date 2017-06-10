@@ -1,5 +1,4 @@
 const baseURL = "http://localhost:3000/auth/";
-
 $('#login-form').submit(function(ev) {
     ev.preventDefault();
     const req = $(document.activeElement).attr('id');
@@ -11,7 +10,7 @@ $('#login-form').submit(function(ev) {
          data: {username: username, password: password},
          success: function(res) {
            if(req=='login'){
-             $('html').html(res);             
+             $('html').html(res);
              console.log('1: ' + username);
              mainPageCode(username);
            }else{

@@ -2,17 +2,39 @@ var User = require('../models/userModel');
 var _ = require('lodash');
 var path = require('path');
 var socketClient = require('socket.io-client');
+var async = require('async');
 const mainPagePath = path.join(__dirname, '../views', 'mainPage.html');
+var arr = require('../../initiate');
 
 exports.create = function(req, res, next) {
   console.log('request: ' + req.body.username);
   var newUser = req.body;
   User.create(newUser)
     .then(function(user) {
-      res.send('signup complete!');
+      console.log(arr.connectedUsers);
+      async.eachOf(arr.connectedUsers, (user, i, eachOfasyncCallback) =>{
+        console.log('at index: ' + i);
+        if(user.username != req.body.username){
+          console.log('emitting to ' + user.username);
+          user.socket.emit('new user',{username:req.body.username, online: false},function(err,data){
+            console.log('done');
+            return eachOfasyncCallback();
+          });
+        }else{
+          return eachOfasyncCallback();
+        }
+      }, (err) => {
+        if (!err){
+          console.log('signup complete!');
+          return res.send('signup complete!');
+        }else{
+          console.log(err);
+          return next(err);
+        }
+      });
     }, function(err) {
       console.log(err);
-      next('username already exists');
+      return next('username already exists');
     });
 };
 
