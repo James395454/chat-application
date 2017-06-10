@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Instructions to run project:
 1- Install mongodb https://docs.mongodb.com/manual/installation/.
 2- Navigate to project directory using command line.
@@ -9,3 +10,6 @@ Instructions to run project:
 8- signup then login.
 9- click on one of the users in the list and type a message to him.
 10- You can run several tabs simultaneoulsy.
+=======
+
+>>>>>>> parent of 965c8e2... Delete README.md
